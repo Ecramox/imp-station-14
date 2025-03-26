@@ -268,3 +268,45 @@
       sprite: _Impstation/Objects/Weapons/Guns/Launchers/grappling_gun_improvised.rsi
       layers:
         - state: hook
+
+- type: entity
+  id: BulletBigStomachShot # This is mostly copied from BulletWaterShot.
+  name: water              # Not sure what most of this does, only touching what I need to to make it work for the flesh dragon
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clickable
+  - type: Physics
+    bodyType: Dynamic
+    linearDamping: 0
+    angularDamping: 0
+  - type: TimedDespawn
+    lifetime: 10
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 0
+  - type: Sprite
+    sprite: _Impstation/Objects/Weapons/Guns/Projectiles/stomach_shot.rsi
+    layers:
+    - state: icon
+      map: ["enum.VaporVisualLayers.Base"]
+  - type: Ammo
+    muzzleFlash: null
+  - type: SolutionContainerManager
+    solutions:
+      vapor:
+        maxVol: 50
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.40,-1.20,0.40,0.60"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+  - type: Vapor
+    active: true
+  - type: Appearance
+  - type: VaporVisuals

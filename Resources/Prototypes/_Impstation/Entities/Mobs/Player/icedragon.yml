@@ -1,0 +1,110 @@
+- type: entity
+  parent: BaseMobDragon
+  id: MobIceDragon
+  name: ice dragon
+  description: A flying leviathan, loosely related to space walruses.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Mobs/Aliens/Carps/icedragon.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: Dragon
+    spawnRiftAction: ActionSpawnRift
+  - type: ActionGun
+    action: ActionIceDragonsBreath
+    gunProto: IceDragonsBreathGun
+  - type: GuideHelp
+    guides:
+    - MinorAntagonists
+  - type: MeleeWeapon
+    altDisarm: false
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Piercing: 5
+        Slash: 5
+        Cold: 5
+        Structural: 15
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      350: Critical
+      400: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6.5
+    weightlessModifier: 1.5
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.8
+      300: 0.6
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  id: IceDragonsBreathGun
+  name: dragon's lung
+  description: For dragon's breathing.
+  components:
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 5
+    rechargeSound:
+      path: /Audio/Animals/space_dragon_roar.ogg
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileIceDragonsBreathSpread
+    capacity: 1
+    count: 1
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Animals/space_dragon_roar.ogg
+    soundEmpty: null
+    projectileSpeed: 5
+
+- type: entity
+  parent: BaseMobDragon
+  name: ice dragon
+  description: A flying leviathan, loosely related to space walruses.
+  id: MobIceDragonDungeon
+  suffix: Dungeon
+  components:
+  - type: GhostRole
+    description: ghost-role-information-space-dragon-dungeon-description
+    rules: ghost-role-information-space-dragon-dungeon-rules
+    raffle:
+      settings: default
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6.5
+    weightlessModifier: 1.5
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      100: 0.6
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  # less meat spawned since it's a lot easier to kill
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatDragon
+      amount: 1
+  - type: MeleeWeapon
+    damage:
+      groups:
+        Brute: 5
+        Cold: 5
+
+- type: entity
+  id: ActionIceDragonsBreath
+  name: "[color=blue]Dragon's Breath[/color]"
+  description: Wonderful for breaking windows, and perfectly serviceable for freezing prey!
+  components:
+  - type: WorldTargetAction
+    icon: { sprite : _Impstation/Objects/Weapons/Guns/Projectiles/magic.rsi, state: icicle }
+    event: !type:ActionGunShootEvent
+    priority: 2
+    checkCanAccess: false
+    range: 0
+    itemIconStyle: BigAction
