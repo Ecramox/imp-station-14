@@ -30,7 +30,7 @@
       600: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
-    baseSprintSpeed: 4
+    baseSprintSpeed: 3.7
     weightlessModifier: 1.5
   - type: SlowOnDamage
     speedModifierThresholds:
