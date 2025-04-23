@@ -1,0 +1,131 @@
+- type: entity
+  parent: BaseMobDragon
+  id: MobFleshDragon
+  name: flesh dragon
+  description: A flying leviathan of myth, with nothing else quite like it.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Mobs/Aliens/Carps/icedragon.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: Dragon
+    spawnRiftAction: ActionSpawnRift
+  - type: ActionGun
+    action: ActionFleshDragonsBreath
+    gunProto: FleshDragonsBreathGun
+  - type: GuideHelp
+    guides:
+    - MinorAntagonists
+  - type: Devourer
+    foodPreference: Humanoid
+    shouldStoreDevoured: true
+    chemical: Ichor
+    healRate: 30.0
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      550: Critical
+      600: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3.7
+    weightlessModifier: 1.5
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.8
+      300: 0.6
+  - type: MeleeWeapon
+    altDisarm: false
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Piercing: 15
+        Slash: 15
+        Caustic: 10
+  - type: Absorbable
+    biomassRestored: 1
+  - type: DragonSwitchableType
+    selectedDragonType: flesh
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  id: FleshDragonsBreathGun
+  name: dragon's lung
+  description: For dragon's breathing.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 50
+        reagents:
+        - ReagentId: SulfuricAcid
+          Quantity: 50
+  - type: SolutionAmmoProvider
+    solutionId: stomach
+    fireCost: 50
+    shots: 1
+    maxShots: 1
+    proto: BulletBigStomachShot
+  - type: SolutionRegeneration
+    solution: stomach
+    generated:
+      reagents:
+      - ReagentId: SulfuricAcid
+        Quantity: 50
+    duration: 0.5
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Animals/space_dragon_roar.ogg
+    soundEmpty: null
+    projectileSpeed: 10
+
+- type: entity
+  parent: BaseMobDragon
+  id: MobFleshDragonDungeon
+  name: flesh dragon
+  description: A flying leviathan of myth, with nothing else quite like it.
+  suffix: Dungeon
+  components:
+  - type: GhostRole
+    description: ghost-role-information-space-dragon-dungeon-description
+    rules: ghost-role-information-space-dragon-dungeon-rules
+    raffle:
+      settings: default
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4.5
+    weightlessModifier: 1.5
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.6
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Dead
+  # less meat spawned since it's a lot easier to kill
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatDragon
+      amount: 1
+  - type: MeleeWeapon
+    damage:
+      groups:
+        Brute: 12
+        Caustic: 8
+
+- type: entity
+  id: ActionFleshDragonsBreath
+  name: "[color=yellow]Dragon's Breath[/color]"
+  description: Spit out stomach acid to prematurely digest your prey!
+  components:
+  - type: WorldTargetAction
+    # TODO: actual sprite
+    icon: { sprite : _Impstation/Objects/Weapons/Guns/Projectiles/magic.rsi, state: icicle }
+    event: !type:ActionGunShootEvent
+    priority: 2
+    checkCanAccess: false
+    range: 0
+    itemIconStyle: BigAction

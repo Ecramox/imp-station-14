@@ -1,0 +1,44 @@
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBulletTrigger
+  id: ProjectileIceDragonsBreath
+  name: dragon's breath
+  description: Yeouch!
+  components:
+  - type: PointLight
+    color: "#00ffff"
+    radius: 3.0
+    energy: 5.0
+  - type: Sprite
+    sprite: _Impstation/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icicle
+      shader: unshaded
+  - type: IgnitionSource
+    temperature: 100
+    ignited: true
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Cryo
+    totalIntensity: 5 # low intensity, the point is to burn attackers not to break open walls, dragons can just eat them
+    intensitySlope: 0.8
+    maxIntensity: 5
+    canCreateVacuum: false
+    deleteAfterExplosion: false
+    repeatable: true
+  - type: TimedDespawn
+    lifetime: 5
+  - type: Projectile
+    damage:
+      types:
+        structural: 20
+
+- type: entity
+  id: ProjectileIceDragonsBreathSpread
+  categories: [ HideSpawnMenu ]
+  parent: ProjectileIceDragonsBreath
+  components:
+  - type: ProjectileSpread
+    proto: ProjectileIceDragonsBreath
+    count: 3
+    spread: 15

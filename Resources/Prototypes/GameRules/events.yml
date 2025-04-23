@@ -170,7 +170,7 @@
 
 - type: entity
   parent: BaseGameRule
-  id: DragonSpawn
+  id: Dragon
   components:
   - type: StationEvent
     weight: 6.5
@@ -181,7 +181,7 @@
   - type: SpaceSpawnRule
     spawnDistance: 0
   - type: AntagSpawner
-    prototype: MobDragon
+    prototype: BaseMobDragon
   - type: DragonRule
   - type: AntagObjectives
     objectives:
