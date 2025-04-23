@@ -181,7 +181,7 @@
   - type: SpaceSpawnRule
     spawnDistance: 0
   - type: AntagSpawner
-    prototype: MobDragon
+    prototype: BaseMobDragon # Imp, so it spawns the Dragon that lets you choose which Dragon you become
   - type: DragonRule
   - type: AntagObjectives
     objectives:
