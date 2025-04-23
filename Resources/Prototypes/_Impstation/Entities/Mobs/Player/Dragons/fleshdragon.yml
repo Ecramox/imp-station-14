@@ -47,6 +47,8 @@
         Caustic: 10
   - type: Absorbable
     biomassRestored: 1
+  - type: DragonSwitchableType
+    selectedDragonType: flesh
 
 - type: entity
   categories: [ HideSpawnMenu ]
