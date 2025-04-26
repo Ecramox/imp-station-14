@@ -32,3 +32,39 @@
       - !type:ExtinguishReaction
   tileReactions:
   - !type:ExtinguishTileReaction { }
+
+- type: reagent # Just stronger Sulfuric Acid for the fleshdragon to spit, since regular sulfuric acid is not impressive
+  parent: SulfuricAcid
+  id: DragonStomachAcid
+  name: reagent-name-dragon-acid
+  group: Toxins
+  desc: reagent-desc-dragon-acid
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: false
+        damage:
+          types:
+            Caustic: 1
+      - !type:Emote
+        emote: Scream
+        probability: 0.1
+  metabolisms:
+    Poison:
+      metabolismRate: 3.00 # Okay damage, high metabolism rate. You need a lot of units to crit. Simulates acid burning through you fast.
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Caustic: 10
+      - !type:PopupMessage
+        type: Local
+        visualType: Large
+        messages: [ "generic-reagent-effect-burning-insides" ]
+        probability: 0.33
+      - !type:Emote
+        emote: Scream
+        probability: 0.2

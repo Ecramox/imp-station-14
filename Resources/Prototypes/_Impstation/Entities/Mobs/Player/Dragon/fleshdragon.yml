@@ -61,7 +61,7 @@
       stomach:
         maxVol: 50
         reagents:
-        - ReagentId: SulfuricAcid
+        - ReagentId: DragonStomachAcid
           Quantity: 50
   - type: SolutionAmmoProvider
     solutionId: stomach
@@ -73,7 +73,7 @@
     solution: stomach
     generated:
       reagents:
-      - ReagentId: SulfuricAcid
+      - ReagentId: DragonStomachAcid
         Quantity: 50
     duration: 0.5
   - type: Gun
