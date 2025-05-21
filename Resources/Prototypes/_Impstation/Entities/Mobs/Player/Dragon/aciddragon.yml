@@ -43,12 +43,12 @@
     damage:
       types:
         Piercing: 15
-        Slash: 15
         Caustic: 10
+        Slash: 15
   - type: Absorbable
     biomassRestored: 1
   - type: DragonSwitchableType
-    selectedDragonType: flesh
+    selectedDragonType: Acid
 
 - type: entity
   categories: [ HideSpawnMenu ]
