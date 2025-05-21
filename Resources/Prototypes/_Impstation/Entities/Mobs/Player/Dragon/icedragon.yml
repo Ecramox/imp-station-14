@@ -5,7 +5,7 @@
   description: A flying leviathan, loosely related to space walruses.
   components:
   - type: Sprite
-    sprite: _Impstation/Mobs/Aliens/Carps/icedragon.rsi
+    sprite: _Impstation/Mobs/Aliens/Carp/icedragon.rsi
     noRot: true
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]

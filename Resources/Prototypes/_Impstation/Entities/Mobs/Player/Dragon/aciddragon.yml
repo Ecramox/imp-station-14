@@ -5,7 +5,7 @@
   description: A flying leviathan of myth, with nothing else quite like it.
   components:
   - type: Sprite
-    sprite: _Impstation/Mobs/Aliens/Carps/icedragon.rsi
+    sprite: _Impstation/Mobs/Aliens/Carp/icedragon.rsi
     noRot: true
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
@@ -43,8 +43,8 @@
     damage:
       types:
         Piercing: 15
-        Caustic: 10
         Slash: 15
+        Caustic: 10
   - type: Absorbable
     biomassRestored: 1
   - type: DragonSwitchableType
@@ -59,13 +59,13 @@
   - type: SolutionContainerManager
     solutions:
       stomach:
-        maxVol: 50
+        maxVol: 30
         reagents:
         - ReagentId: DragonStomachAcid
-          Quantity: 50
+          Quantity: 30
   - type: SolutionAmmoProvider
     solutionId: stomach
-    fireCost: 50
+    fireCost: 20
     shots: 1
     maxShots: 1
     proto: BulletBigStomachShot
@@ -74,7 +74,7 @@
     generated:
       reagents:
       - ReagentId: DragonStomachAcid
-        Quantity: 50
+        Quantity: 20
     duration: 0.5
   - type: Gun
     soundGunshot:
@@ -114,7 +114,7 @@
     damage:
       groups:
         Brute: 12
-        Caustic: 8
+        Caustic: 5
 
 - type: entity
   id: ActionAcidDragonsBreath
