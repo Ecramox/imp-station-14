@@ -33,7 +33,7 @@
   tileReactions:
   - !type:ExtinguishTileReaction { }
 
-- type: reagent # Just stronger Sulfuric Acid for the fleshdragon to spit, since regular sulfuric acid is not impressive
+- type: reagent # Just stronger Sulfuric Acid for the AcidDragon to spit, since regular sulfuric acid is not impressive
   parent: SulfuricAcid
   id: DragonStomachAcid
   name: reagent-name-dragon-acid

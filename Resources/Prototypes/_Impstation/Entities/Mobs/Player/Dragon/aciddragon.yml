@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseMobDragon
-  id: MobFleshDragon
+  id: MobAcidDragon
   name: flesh dragon
   description: A flying leviathan of myth, with nothing else quite like it.
   components:
@@ -13,8 +13,8 @@
   - type: Dragon
     spawnRiftAction: ActionSpawnRift
   - type: ActionGun
-    action: ActionFleshDragonsBreath
-    gunProto: FleshDragonsBreathGun
+    action: ActionAcidDragonsBreath
+    gunProto: AcidDragonsBreathGun
   - type: GuideHelp
     guides:
     - MinorAntagonists
@@ -52,7 +52,7 @@
 
 - type: entity
   categories: [ HideSpawnMenu ]
-  id: FleshDragonsBreathGun
+  id: AcidDragonsBreathGun
   name: dragon's lung
   description: For dragon's breathing.
   components:
@@ -84,7 +84,7 @@
 
 - type: entity
   parent: BaseMobDragon
-  id: MobFleshDragonDungeon
+  id: MobAcidDragonDungeon
   name: flesh dragon
   description: A flying leviathan of myth, with nothing else quite like it.
   suffix: Dungeon
@@ -117,7 +117,7 @@
         Caustic: 8
 
 - type: entity
-  id: ActionFleshDragonsBreath
+  id: ActionAcidDragonsBreath
   name: "[color=yellow]Dragon's Breath[/color]"
   description: Spit out stomach acid to prematurely digest your prey!
   components:
