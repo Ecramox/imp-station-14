@@ -48,7 +48,7 @@
   - type: Absorbable
     biomassRestored: 1
   - type: DragonSwitchableType
-    selectedDragonType: Acid
+    selectedDragonType: acid
 
 - type: entity
   categories: [ HideSpawnMenu ]
